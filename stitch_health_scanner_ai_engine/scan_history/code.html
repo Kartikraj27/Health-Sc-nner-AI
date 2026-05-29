@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Health Scanner AI - History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "deep-navy": "#0A0B14",
+                        "tertiary-fixed-dim": "#ffb2bd",
+                        "outline-variant": "#474552",
+                        "surface-container-high": "#282933",
+                        "tertiary-container": "#bf084b",
+                        "inverse-on-surface": "#2f303a",
+                        "surface-container-lowest": "#0d0e17",
+                        "outline": "#918f9e",
+                        "tertiary": "#ffb2bd",
+                        "on-tertiary-container": "#ffd0d6",
+                        "secondary": "#c3c0ff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#c8c4d4",
+                        "on-secondary-fixed-variant": "#3e389b",
+                        "on-primary-fixed-variant": "#3e379e",
+                        "on-primary": "#261c88",
+                        "surface-container": "#1e1f29",
+                        "inverse-surface": "#e3e1ef",
+                        "tertiary-fixed": "#ffd9dd",
+                        "secondary-fixed": "#e3dfff",
+                        "on-surface": "#e3e1ef",
+                        "surface-container-highest": "#33343e",
+                        "on-secondary-container": "#b0adff",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#670024",
+                        "on-secondary-fixed": "#100069",
+                        "surface-tint": "#c4c0ff",
+                        "surface-dim": "#12131c",
+                        "primary-fixed": "#e3dfff",
+                        "on-primary-container": "#dbd8ff",
+                        "neon-cyan": "#00F0FF",
+                        "primary-container": "#5853ba",
+                        "clinical-white": "#F8FAFC",
+                        "on-tertiary-fixed-variant": "#900036",
+                        "background": "#12131c",
+                        "on-background": "#e3e1ef",
+                        "surface-variant": "#33343e",
+                        "surface-container-low": "#1a1b24",
+                        "on-error": "#690005",
+                        "surface-bright": "#383843",
+                        "secondary-container": "#3e389b",
+                        "on-secondary": "#261e84",
+                        "primary": "#c4c0ff",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#400013",
+                        "alert-red": "#D31130",
+                        "on-primary-fixed": "#110069",
+                        "primary-fixed-dim": "#c4c0ff",
+                        "inverse-primary": "#5651b8",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "surface": "#12131c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "64px",
+                        "grid-margin": "24px",
+                        "unit": "8px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #12131c;
+            color: #e3e1ef;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(30, 31, 41, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02);
+        }
+        .neon-border {
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+        .status-glow-excellent {
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #33343e;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/20">
+<div class="flex justify-between items-center px-grid-margin py-4 w-full max-w-[1280px] mx-auto">
+<div class="flex items-center gap-3">
+<img alt="User profile" class="w-10 h-10 rounded-full border border-neon-cyan/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXBfpQ1es3XuSp34nL8vtA-IZxHSHL3ZlG3DZgDK5bnnzdxeftNpyX2IxFgTYgVizQxoi7_JFPQ_OB3AV4oM5TQ0qMIv88OFdM58oGYMQUYJe58BRM6xgDOFm_Fcn1MMObRzi1WifRTolk49vJqnBBSsg9qvDN9k37jXfbtHy7ETH9sm7fITUYQo6TehdFTHyD7eUEV7_UCtv6bPGs1kMCuBtoe6VAVpI6A4fl5r2orRe0JJobrI7UVGhF5qSiqJJ3Evh47v3lT_3k"/>
+<h1 class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-neon-cyan dark:text-neon-cyan tracking-tight">History</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">notifications</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-24 pb-32 px-grid-margin w-full max-w-[1280px] mx-auto min-h-screen">
+<!-- Search & Filter Area -->
+<div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl pl-12 pr-4 py-3 text-on-surface focus:ring-1 focus:ring-neon-cyan/50 placeholder:text-on-surface-variant/40" placeholder="Search past scans..." type="text"/>
+</div>
+<div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+<button class="px-4 py-2 rounded-full glass-card border-neon-cyan/40 text-neon-cyan text-sm font-semibold whitespace-nowrap">All Scans</button>
+<button class="px-4 py-2 rounded-full glass-card text-on-surface-variant text-sm font-semibold whitespace-nowrap hover:bg-surface-container-highest transition-colors">This Week</button>
+<button class="px-4 py-2 rounded-full glass-card text-on-surface-variant text-sm font-semibold whitespace-nowrap hover:bg-surface-container-highest transition-colors">High Protein</button>
+</div>
+</div>
+<!-- History List (Bento-ish Grid Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="glass-card rounded-2xl p-4 group cursor-pointer active:scale-[0.98] transition-all duration-300">
+<div class="relative h-48 w-full rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic close-up of a vibrant avocado toast topped with microgreens and chili flakes, presented on a dark ceramic plate. The lighting is crisp and medical-grade, highlighting the fresh textures. The background is a soft-focus dark interior with clinical blue and neon cyan accents, evoking a high-end health diagnostic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwrArv8ADNO9ha20EHhmvFMyqGDEB6IQN8kUAXIPh9SOYK0rTQ_uMTyFjYsSJ1Mc6864YSmMCQAW1L-4LK2mNMg-g-qi3VCPDgIDJ_IvK3tyhPKok9ZV8bRHjXGrcJoUibGhsfO_V3uBGnXcx173UUmv82psvfEHZbyLXS-WQuOxZ79USsPcJ4FTpnmWIj1caH2uzuuPooQAM9f_acgm52DAyDzqMhHrjpB7J9E1dZXf2NIsg3OyU3apD0ofA9PIXkRtCz9NS1Nl9o"/>
+<div class="absolute top-3 right-3 bg-deep-navy/80 backdrop-blur-md px-3 py-1 rounded-full border border-neon-cyan/20">
+<span class="text-neon-cyan text-[10px] font-bold tracking-widest uppercase">Excellent</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface mb-1">Avocado Toast</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                            Today, 8:30 AM
+                        </p>
+</div>
+<div class="text-right">
+<p class="text-neon-cyan font-bold text-lg leading-tight">342</p>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter">kcal</p>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-2xl p-4 group cursor-pointer active:scale-[0.98] transition-all duration-300">
+<div class="relative h-48 w-full rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A gourmet salmon salad with mixed greens, quinoa, and lemon wedges arranged perfectly on a marble surface. The lighting is high-contrast and professional, with a cool-toned atmospheric glow. Neon cyan light streaks suggest a digital scan in progress, maintaining the clinical precision and premium technology feel of a health application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmJNTde2VvMsVHNwDRed3PucmhLkPZecZvXG55paFg17VnM3_fYf9aAhZXbMst8uZwz3Z595dVVwIoicz76by62EVNJ2afxF31B3XifyK0hVx8RhL4_Jawwg1hFAm6M_MeGKirQljcT0anoh5SQvU1-n9SKfokAmz6uwa5LNhVArGPBqEp7MnyPHWm-b0bUHBoUbHwFhUarKfa1WstgA1qtp1FsuKkynhjJHTyR4kOKp97cye19wLEeEEk9c_2Ya1epbRHFVbKYecn"/>
+<div class="absolute top-3 right-3 bg-deep-navy/80 backdrop-blur-md px-3 py-1 rounded-full border border-neon-cyan/20">
+<span class="text-neon-cyan text-[10px] font-bold tracking-widest uppercase">Excellent</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface mb-1">Grilled Salmon Salad</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                            Yesterday, 1:15 PM
+                        </p>
+</div>
+<div class="text-right">
+<p class="text-neon-cyan font-bold text-lg leading-tight">410</p>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter">kcal</p>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-2xl p-4 group cursor-pointer active:scale-[0.98] transition-all duration-300">
+<div class="relative h-48 w-full rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A colorful poke bowl with tuna, edamame, and radish slices, captured with sharp clarity and surgical detail. The color palette is dominated by deep blues and vibrant pinks, illuminated by a futuristic neon cyan laboratory light. The mood is sophisticated and reassuring, emphasizing the scientific analysis of fresh, healthy food." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2bDmS731_9l1036Eezf3AixFtV1k26IDyxzWxyi_0vYcLhn4_glOVfJLcSvkNLpHmxcrdq7nhhKpySk4EBb4X5CNiS-0lpvncqPQPyrulwDz2AximhlYnST9h16vrqpdQm5N5QwKNpdDC0mnqkF-O61Jq-mhGiRoJus3tsLS5MnYPANoSbTqRH9yGSSiCnaIekm13tJlIcXWYrC9gx4_bzfceNqBr9BZ4cM2OzAxSByQkNdpS5l57aPgX4pIOLcNI7bT8rm6aShHa"/>
+<div class="absolute top-3 right-3 bg-deep-navy/80 backdrop-blur-md px-3 py-1 rounded-full border border-secondary/20">
+<span class="text-secondary text-[10px] font-bold tracking-widest uppercase">Good</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface mb-1">Ahi Tuna Bowl</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                            May 24, 7:45 PM
+                        </p>
+</div>
+<div class="text-right">
+<p class="text-neon-cyan font-bold text-lg leading-tight">525</p>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter">kcal</p>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card rounded-2xl p-4 group cursor-pointer active:scale-[0.98] transition-all duration-300">
+<div class="relative h-48 w-full rounded-xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A dark-themed overhead shot of a fresh green smoothie in a glass surrounded by spinach leaves and lime slices. The lighting creates a dramatic, moody effect with neon cyan highlights reflecting off the glass. The style is clinical yet appetizing, portraying the smoothie as a precise nutritional formula within a modern health app ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZv6YQNpSy8QcvCtSra8wzjyFgto8Ylp9VhEHdBh0Iy8gPfPlGd1lCz9zYjQ7mtxfcY0kxf_B5aWL7TlIzsFLPY2g0GWdLaWy-7A5q93g5W2nJfPvgj3yYU7KiyRZEjW3Gj_3vzItpft1y75lORx4RsOQLNY-txmHqCREQM_Jdx0vfkfTMN1jD3-6Pa--uX_BL_xJaMW42o6ceTbUxGLdz4KzChL2fgTNCk0clI91YCyG3WCiThWh_3t5m4rdh_ZjyBIjhmxPM6hzV"/>
+<div class="absolute top-3 right-3 bg-deep-navy/80 backdrop-blur-md px-3 py-1 rounded-full border border-neon-cyan/20">
+<span class="text-neon-cyan text-[10px] font-bold tracking-widest uppercase">Excellent</span>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-sm text-[18px] text-on-surface mb-1">Green Detox Smoothie</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                            May 23, 9:00 AM
+                        </p>
+</div>
+<div class="text-right">
+<p class="text-neon-cyan font-bold text-lg leading-tight">185</p>
+<p class="text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter">kcal</p>
+</div>
+</div>
+</div>
+<!-- Empty State Helper (Hidden by default, shown for demonstration if list was empty) -->
+<div class="hidden col-span-full py-20 flex flex-col items-center justify-center text-center" id="empty-state">
+<div class="w-24 h-24 mb-6 rounded-full bg-surface-container-high flex items-center justify-center border border-neon-cyan/20">
+<span class="material-symbols-outlined text-neon-cyan text-4xl">inventory_2</span>
+</div>
+<h2 class="font-headline-sm text-on-surface mb-2">No scans yet</h2>
+<p class="text-on-surface-variant max-w-xs mx-auto mb-8">Your nutritional journey starts here. Scan your first meal to see clinical insights.</p>
+<button class="bg-primary-container text-clinical-white px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined">document_scanner</span>
+                    Scan Now
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-low/90 dark:bg-surface-container-lowest/90 backdrop-blur-2xl border-t border-white/5 shadow-[0_-4px_20px_rgba(0,240,255,0.1)]">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 max-w-[1280px] mx-auto left-1/2 -translate-x-1/2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-neon-cyan transition-colors active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">document_scanner</span>
+<span class="font-label-caps text-label-caps uppercase">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-neon-cyan rounded-full px-6 py-2 shadow-[0_0_15px_rgba(0,240,255,0.3)] active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">history</span>
+<span class="font-label-caps text-label-caps uppercase">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-neon-cyan transition-colors active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-caps text-label-caps uppercase">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple logic to simulate toggling empty state for demonstration
+        function toggleEmptyState() {
+            const list = document.querySelector('.grid');
+            const cards = list.querySelectorAll('.glass-card');
+            const empty = document.getElementById('empty-state');
+            
+            if (cards.length === 0) {
+                empty.classList.remove('hidden');
+            }
+        }
+
+        // Interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Future navigation to detail view
+                console.log('Navigating to scan details...');
+            });
+        });
+
+        // Atmospheric scan line animation simulation
+        setInterval(() => {
+            const cards = document.querySelectorAll('.glass-card img');
+            const randomCard = cards[Math.floor(Math.random() * cards.length)];
+            // In a real app, we'd add a CSS animation class here
+        }, 3000);
+    </script>
+</body></html>

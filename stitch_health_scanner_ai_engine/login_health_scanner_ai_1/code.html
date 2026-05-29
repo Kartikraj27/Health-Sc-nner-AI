@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Health Scanner AI - Premium Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "deep-navy": "#0A0B14",
+                      "tertiary-fixed-dim": "#ffb2bd",
+                      "outline-variant": "#474552",
+                      "surface-container-high": "#282933",
+                      "tertiary-container": "#bf084b",
+                      "inverse-on-surface": "#2f303a",
+                      "surface-container-lowest": "#0d0e17",
+                      "outline": "#918f9e",
+                      "tertiary": "#ffb2bd",
+                      "on-tertiary-container": "#ffd0d6",
+                      "secondary": "#c3c0ff",
+                      "on-error-container": "#ffdad6",
+                      "on-surface-variant": "#c8c4d4",
+                      "on-secondary-fixed-variant": "#3e389b",
+                      "on-primary-fixed-variant": "#3e379e",
+                      "on-primary": "#261c88",
+                      "surface-container": "#1e1f29",
+                      "inverse-surface": "#e3e1ef",
+                      "tertiary-fixed": "#ffd9dd",
+                      "secondary-fixed": "#e3dfff",
+                      "on-surface": "#e3e1ef",
+                      "surface-container-highest": "#33343e",
+                      "on-secondary-container": "#b0adff",
+                      "error": "#ffb4ab",
+                      "on-tertiary": "#670024",
+                      "on-secondary-fixed": "#100069",
+                      "surface-tint": "#c4c0ff",
+                      "surface-dim": "#12131c",
+                      "primary-fixed": "#e3dfff",
+                      "on-primary-container": "#dbd8ff",
+                      "neon-cyan": "#00F0FF",
+                      "primary-container": "#5853ba",
+                      "clinical-white": "#F8FAFC",
+                      "on-tertiary-fixed-variant": "#900036",
+                      "background": "#12131c",
+                      "on-background": "#e3e1ef",
+                      "surface-variant": "#33343e",
+                      "surface-container-low": "#1a1b24",
+                      "on-error": "#690005",
+                      "surface-bright": "#383843",
+                      "secondary-container": "#3e389b",
+                      "on-secondary": "#261e84",
+                      "primary": "#c4c0ff",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#400013",
+                      "alert-red": "#D31130",
+                      "on-primary-fixed": "#110069",
+                      "primary-fixed-dim": "#c4c0ff",
+                      "inverse-primary": "#5651b8",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "surface": "#12131c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "64px",
+                      "grid-margin": "24px",
+                      "unit": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(18, 19, 28, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        .scanner-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+            animation: scan 3s infinite linear;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-10px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(400px); opacity: 0; }
+        }
+        .jellyfish-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background-color: #0A0B14;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-deep-navy text-on-surface selection:bg-neon-cyan/30 overflow-x-hidden">
+<!-- Background Animation Layer -->
+<div class="jellyfish-bg">
+<img class="absolute w-full h-full object-cover opacity-30 mix-blend-screen animate-pulse" data-alt="A mesmerizing, fluid scene of translucent, glowing jellyfish swimming gracefully through a deep, midnight-navy oceanic abyss. The bioluminescent creatures emit a soft, ethereal cyan and violet light that ripples through the dark water. The atmosphere is serene, high-end, and futuristic, with subtle particles mimicking distant plankton. The lighting is cinematic and moody, focusing on the intricate textures and flowing tentacles of the jellyfish as they pulse rhythmically in the void." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt7M0hWL2msd2rq2M8B7wFwhsFOV3GVyD-xvu1ICkjeYS1vuiTXvtkB5kTwIGCsY_gRFhB00zIkYE2ethK9p8VJGxNehfKGKBsPwVh6eEe6Yl5WS_3Emf2s1VTcjLnR06tXivBvE_E8UI-TrfdnUKJOg5X1wucq5eBUF8Vqi0NjHXyqghVeUCwXjCgj85oPTT080ubUVGcbmMT0FsX8YfDFFqnCDuXCmaCLO7ColGZB-9eXhugNJTt6JAOWJh4Eq62RG5p2PB7Pkzc"/>
+<div class="absolute inset-0 bg-gradient-to-b from-deep-navy/40 via-transparent to-deep-navy"></div>
+</div>
+<!-- Theme Switcher & Top Bar -->
+<header class="fixed top-0 w-full z-50 px-grid-margin py-6 flex justify-between items-center max-w-[1280px] mx-auto left-0 right-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-cyan text-3xl neon-glow">biotech</span>
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface tracking-tight neon-glow">Health Scanner AI</span>
+</div>
+<button class="p-3 rounded-full glass text-on-surface hover:text-neon-cyan transition-all duration-300 active:scale-90" id="theme-toggle">
+<span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+</button>
+</header>
+<main class="min-h-screen flex items-center justify-center px-4 pt-24 pb-12 relative z-10">
+<div class="w-full max-w-[440px] glass rounded-[32px] p-8 md:p-10 relative overflow-hidden">
+<!-- Decorative Scanner Line -->
+<div class="scanner-line absolute top-0 left-0 w-full z-0 opacity-20"></div>
+<div class="text-center mb-10">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-2">Welcome Back</h1>
+<p class="font-body-md text-on-surface-variant opacity-70">Securing your biometric data</p>
+</div>
+<!-- Social Logins -->
+<div class="space-y-4 mb-8">
+<button class="w-full flex items-center justify-center gap-4 bg-clinical-white text-deep-navy font-label-caps text-label-caps h-14 rounded-xl hover:opacity-90 transition-all active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="currentColor"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="currentColor"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="currentColor"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="currentColor"></path>
+</svg>
+                    Continue with Google
+                </button>
+<button class="w-full flex items-center justify-center gap-4 bg-surface-container-highest text-on-surface font-label-caps text-label-caps h-14 rounded-xl hover:bg-surface-bright transition-all active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.04 1.72-3.34 1.72-1.2 0-1.63-.73-3.11-.73-1.47 0-1.98.71-3.1.71-1.26 0-2.45-.85-3.48-2.31-2.1-2.98-1.61-7.4 1-9.35.88-.67 1.88-1.03 2.89-1.03 1.25 0 2.17.65 3 .65s1.82-.71 3.25-.71c1.01 0 2.01.27 2.84.81-2.43 1.51-2.01 4.94.49 6.22-.56 1.55-1.44 3-2.44 4zm-3.15-16.14c.73-.89 1.22-2.12 1.08-3.34-1.05.04-2.32.7-3.08 1.58-.68.78-1.28 2.03-1.12 3.21 1.17.09 2.37-.56 3.12-1.45z" fill="currentColor"></path>
+</svg>
+                    Continue with Apple
+                </button>
+</div>
+<div class="relative flex items-center gap-4 mb-8">
+<div class="flex-1 border-t border-outline-variant/30"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant opacity-50">OR</span>
+<div class="flex-1 border-t border-outline-variant/30"></div>
+</div>
+<!-- Login Form -->
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1">Mobile Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">phone_iphone</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest/50 border border-outline-variant/20 rounded-xl focus:ring-1 focus:ring-neon-cyan focus:border-neon-cyan transition-all outline-none font-body-md text-on-surface" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Password</label>
+<a class="font-label-caps text-label-caps text-neon-cyan hover:opacity-80 transition-opacity" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">lock</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest/50 border border-outline-variant/20 rounded-xl focus:ring-1 focus:ring-neon-cyan focus:border-neon-cyan transition-all outline-none font-body-md text-on-surface" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full h-14 bg-primary text-on-primary font-headline-sm text-headline-sm rounded-xl shadow-[0_0_20px_rgba(196,192,255,0.2)] hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:bg-neon-cyan hover:text-deep-navy transition-all duration-300 active:scale-[0.97]" type="submit">
+                    Login Securely
+                </button>
+</form>
+<div class="mt-8 text-center">
+<p class="font-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-neon-cyan font-semibold hover:underline decoration-neon-cyan/30 underline-offset-4" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Bottom Decorative Elements -->
+<div class="fixed bottom-8 left-0 w-full flex justify-center gap-12 text-on-surface-variant/40 font-label-caps text-label-caps uppercase tracking-widest z-0">
+<span>Privacy</span>
+<span>Precision</span>
+<span>Security</span>
+</div>
+<script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.innerText = 'dark_mode';
+                // Adjust glass panels for light mode visibility if needed via script or utility classes
+            } else {
+                html.classList.add('dark');
+                themeIcon.innerText = 'light_mode';
+            }
+        });
+
+        // Floating particles or subtle movement interaction
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            const bgImage = document.querySelector('.jellyfish-bg img');
+            if (bgImage) {
+                bgImage.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+
+        // Micro-interaction for form inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.querySelector('label').style.color = '#00F0FF';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.querySelector('label').style.color = '';
+            });
+        });
+    </script>
+</body></html>

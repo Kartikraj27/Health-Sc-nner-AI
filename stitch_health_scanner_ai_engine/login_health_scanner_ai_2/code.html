@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Health Scanner AI - Premium Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "deep-navy": "#0A0B14",
+                      "tertiary-fixed-dim": "#ffb2bd",
+                      "outline-variant": "#474552",
+                      "surface-container-high": "#282933",
+                      "tertiary-container": "#bf084b",
+                      "inverse-on-surface": "#2f303a",
+                      "surface-container-lowest": "#0d0e17",
+                      "outline": "#918f9e",
+                      "tertiary": "#ffb2bd",
+                      "on-tertiary-container": "#ffd0d6",
+                      "secondary": "#c3c0ff",
+                      "on-error-container": "#ffdad6",
+                      "on-surface-variant": "#c8c4d4",
+                      "on-secondary-fixed-variant": "#3e389b",
+                      "on-primary-fixed-variant": "#3e379e",
+                      "on-primary": "#261c88",
+                      "surface-container": "#1e1f29",
+                      "inverse-surface": "#e3e1ef",
+                      "tertiary-fixed": "#ffd9dd",
+                      "secondary-fixed": "#e3dfff",
+                      "on-surface": "#e3e1ef",
+                      "surface-container-highest": "#33343e",
+                      "on-secondary-container": "#b0adff",
+                      "error": "#ffb4ab",
+                      "on-tertiary": "#670024",
+                      "on-secondary-fixed": "#100069",
+                      "surface-tint": "#c4c0ff",
+                      "surface-dim": "#12131c",
+                      "primary-fixed": "#e3dfff",
+                      "on-primary-container": "#dbd8ff",
+                      "neon-cyan": "#00F0FF",
+                      "primary-container": "#5853ba",
+                      "clinical-white": "#F8FAFC",
+                      "on-tertiary-fixed-variant": "#900036",
+                      "background": "#12131c",
+                      "on-background": "#e3e1ef",
+                      "surface-variant": "#33343e",
+                      "surface-container-low": "#1a1b24",
+                      "on-error": "#690005",
+                      "surface-bright": "#383843",
+                      "secondary-container": "#3e389b",
+                      "on-secondary": "#261e84",
+                      "primary": "#c4c0ff",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#400013",
+                      "alert-red": "#D31130",
+                      "on-primary-fixed": "#110069",
+                      "primary-fixed-dim": "#c4c0ff",
+                      "inverse-primary": "#5651b8",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "surface": "#12131c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "64px",
+                      "grid-margin": "24px",
+                      "unit": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(18, 19, 28, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        .scanner-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+            animation: scan 4s infinite linear;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-10px); opacity: 0; }
+            10% { opacity: 0.3; }
+            50% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(600px); opacity: 0; }
+        }
+        #jellyfish-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #0A0B14;
+        }
+        .floating-ui {
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        body {
+            min-height: 100dvh;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="bg-deep-navy text-on-surface selection:bg-neon-cyan/30">
+<!-- Canvas for Procedural Jellyfish Animation -->
+<canvas id="jellyfish-canvas"></canvas>
+<!-- Theme Switcher & Top Bar -->
+<header class="fixed top-0 w-full z-50 px-grid-margin py-6 flex justify-between items-center max-w-[1280px] mx-auto left-0 right-0">
+<div class="flex items-center gap-2 floating-ui" id="logo-container">
+<span class="material-symbols-outlined text-neon-cyan text-3xl neon-glow">biotech</span>
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface tracking-tight neon-glow">Health Scanner AI</span>
+</div>
+<button class="p-3 rounded-full glass text-on-surface hover:text-neon-cyan transition-all duration-300 active:scale-90" id="theme-toggle">
+<span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+</button>
+</header>
+<main class="min-h-screen flex items-center justify-center px-4 pt-24 pb-12 relative z-10">
+<div class="w-full max-w-[440px] glass rounded-[32px] p-8 md:p-10 relative overflow-hidden floating-ui" id="login-container">
+<!-- Decorative Scanner Line -->
+<div class="scanner-line absolute top-0 left-0 w-full z-0 pointer-events-none"></div>
+<div class="text-center mb-10 relative z-10">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-2">Welcome Back</h1>
+<p class="font-body-md text-on-surface-variant opacity-70">Securing your biometric data</p>
+</div>
+<!-- Social Logins -->
+<div class="space-y-4 mb-8 relative z-10">
+<button class="w-full flex items-center justify-center gap-4 bg-clinical-white text-deep-navy font-label-caps text-label-caps h-14 rounded-xl hover:opacity-90 transition-all active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="currentColor"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="currentColor"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="currentColor"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="currentColor"></path>
+</svg>
+                    Continue with Google
+                </button>
+<button class="w-full flex items-center justify-center gap-4 bg-surface-container-highest text-on-surface font-label-caps text-label-caps h-14 rounded-xl hover:bg-surface-bright transition-all active:scale-[0.98]">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.04 1.72-3.34 1.72-1.2 0-1.63-.73-3.11-.73-1.47 0-1.98.71-3.1.71-1.26 0-2.45-.85-3.48-2.31-2.1-2.98-1.61-7.4 1-9.35.88-.67 1.88-1.03 2.89-1.03 1.25 0 2.17.65 3 .65s1.82-.71 3.25-.71c1.01 0 2.01.27 2.84.81-2.43 1.51-2.01 4.94.49 6.22-.56 1.55-1.44 3-2.44 4zm-3.15-16.14c.73-.89 1.22-2.12 1.08-3.34-1.05.04-2.32.7-3.08 1.58-.68.78-1.28 2.03-1.12 3.21 1.17.09 2.37-.56 3.12-1.45z" fill="currentColor"></path>
+</svg>
+                    Continue with Apple
+                </button>
+</div>
+<div class="relative flex items-center gap-4 mb-8 relative z-10">
+<div class="flex-1 border-t border-outline-variant/30"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant opacity-50">OR</span>
+<div class="flex-1 border-t border-outline-variant/30"></div>
+</div>
+<!-- Login Form -->
+<form class="space-y-6 relative z-10">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-1">Mobile Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">phone_iphone</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest/30 border border-outline-variant/20 rounded-xl focus:ring-1 focus:ring-neon-cyan focus:border-neon-cyan transition-all outline-none font-body-md text-on-surface" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Password</label>
+<a class="font-label-caps text-label-caps text-neon-cyan hover:opacity-80 transition-opacity" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-60">lock</span>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-lowest/30 border border-outline-variant/20 rounded-xl focus:ring-1 focus:ring-neon-cyan focus:border-neon-cyan transition-all outline-none font-body-md text-on-surface" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full h-14 bg-primary text-on-primary font-headline-sm text-headline-sm rounded-xl shadow-[0_0_20px_rgba(196,192,255,0.2)] hover:shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:bg-neon-cyan hover:text-deep-navy transition-all duration-300 active:scale-[0.97]" type="submit">
+                    Login Securely
+                </button>
+</form>
+<div class="mt-8 text-center relative z-10">
+<p class="font-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-neon-cyan font-semibold hover:underline decoration-neon-cyan/30 underline-offset-4" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Bottom Decorative Elements -->
+<div class="fixed bottom-8 left-0 w-full flex justify-center gap-12 text-on-surface-variant/40 font-label-caps text-label-caps uppercase tracking-widest z-0 pointer-events-none">
+<span>Privacy</span>
+<span>Precision</span>
+<span>Security</span>
+</div>
+<script>
+        // Jellyfish Animation logic
+        const canvas = document.getElementById('jellyfish-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let jellyfishArray = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Jellyfish {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 200 + 100;
+                this.radius = Math.random() * 15 + 20;
+                this.speed = Math.random() * 0.5 + 0.2;
+                this.color = `rgba(0, 240, 255, ${Math.random() * 0.4 + 0.2})`;
+                this.angle = 0;
+                this.tentacles = [];
+                const tentacleCount = 8 + Math.floor(Math.random() * 5);
+                for(let i = 0; i < tentacleCount; i++) {
+                    this.tentacles.push({
+                        phase: Math.random() * Math.PI * 2,
+                        offset: (i / tentacleCount) * Math.PI * 2
+                    });
+                }
+            }
+
+            update() {
+                this.y -= this.speed;
+                this.x += Math.sin(this.y * 0.01) * 0.5;
+                this.angle += 0.05;
+
+                if (this.y < -200) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                
+                // Draw Body
+                ctx.beginPath();
+                ctx.arc(0, 0, this.radius, Math.PI, 0);
+                ctx.lineTo(this.radius, this.radius * 0.3);
+                ctx.quadraticCurveTo(0, this.radius * 0.6, -this.radius, this.radius * 0.3);
+                ctx.closePath();
+                
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#00F0FF';
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                
+                // Draw Tentacles
+                this.tentacles.forEach((t, i) => {
+                    ctx.beginPath();
+                    ctx.moveTo((i - this.tentacles.length/2) * (this.radius * 0.2), this.radius * 0.3);
+                    
+                    let tx = (i - this.tentacles.length/2) * (this.radius * 0.2);
+                    let ty = this.radius * 0.3;
+                    
+                    for(let segment = 0; segment < 15; segment++) {
+                        const wave = Math.sin(this.angle + segment * 0.3 + t.phase) * 3;
+                        ty += 5;
+                        tx += wave;
+                        ctx.lineTo(tx, ty);
+                    }
+                    
+                    ctx.strokeStyle = this.color;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+                
+                ctx.restore();
+            }
+        }
+
+        function initJellyfish() {
+            jellyfishArray = [];
+            const count = Math.floor((width * height) / 40000) + 5;
+            for(let i = 0; i < count; i++) {
+                jellyfishArray.push(new Jellyfish());
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 11, 20, 0.15)'; // Trail effect
+            ctx.fillRect(0, 0, width, height);
+            
+            jellyfishArray.forEach(j => {
+                j.update();
+                j.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        initJellyfish();
+        animate();
+
+        // Parallax / Floating UI interaction
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+            
+            const loginBox = document.getElementById('login-container');
+            const logo = document.getElementById('logo-container');
+            
+            if (loginBox) {
+                loginBox.style.transform = `translate(${x}px, ${y}px)`;
+            }
+            if (logo) {
+                logo.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+            }
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                themeIcon.innerText = 'dark_mode';
+            } else {
+                html.classList.add('dark');
+                themeIcon.innerText = 'light_mode';
+            }
+        });
+
+        // Micro-interaction for form inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                const label = input.parentElement.parentElement.querySelector('label');
+                if (label) label.style.color = '#00F0FF';
+            });
+            input.addEventListener('blur', () => {
+                const label = input.parentElement.parentElement.querySelector('label');
+                if (label) label.style.color = '';
+            });
+        });
+    </script>
+</body></html>
