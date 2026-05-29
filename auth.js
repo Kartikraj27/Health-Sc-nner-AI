@@ -1,10 +1,9 @@
 /**
- * auth.js - FIXED FOR OTP DISPLAY
+ * auth.js - COMPLETE FIXED FOR GOOGLE, APPLE, AND MOBILE OTP
  * Multi-Method Authentication Manager (Local & GitHub Pages Simulation)
  */
 
 const AUTH_STORAGE_KEY = 'health_scanner_auth';
-const SETTINGS_STORAGE_KEY = 'health_scanner_settings';
 
 class AuthManager {
     constructor() {
@@ -32,56 +31,57 @@ class AuthManager {
         this.subscribers.forEach(cb => cb(this.user));
     }
 
+    // FIXED: Simulates a Google Account Choice Popup and Logs in Instantly
     async loginWithGoogle() {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const mockUser = {
                     uid: 'google-' + Math.floor(Math.random() * 100000),
-                    displayName: 'Google Explorer',
+                    displayName: 'Google User (Demo)',
                     email: 'user@google.com',
                     photoURL: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
                     settings: { theme: 'dark', medicalSharing: false }
                 };
                 this.setUserSession(mockUser);
+                alert(`🎉 Google Authentication Successful!\nLogged in as: ${mockUser.displayName}`);
                 resolve(mockUser);
-            }, 800);
+            }, 600);
         });
     }
 
+    // FIXED: Simulates an Apple ID Secure Authentication Prompt and Logs in Instantly
     async loginWithApple() {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const mockUser = {
                     uid: 'apple-' + Math.floor(Math.random() * 100000),
-                    displayName: 'Apple User',
+                    displayName: 'Apple Identity User',
                     email: 'user@apple.com',
                     photoURL: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150',
                     settings: { theme: 'dark', medicalSharing: false }
                 };
                 this.setUserSession(mockUser);
+                alert(`🎉 Apple ID Connected Securely!\nLogged in successfully.`);
                 resolve(mockUser);
-            }, 800);
+            }, 600);
         });
     }
 
-    // CRITICAL FIX: Trigger 6-digit OTP via direct Screen Alert Box
+    // FIXED: Mobile / Email OTP Generator Trigger via Screen Popup Alert
     async sendOTP(identifier) {
         return new Promise((resolve, reject) => {
             if (!identifier || identifier.trim() === "") {
                 reject(new Error('Please enter a valid Mobile Number or Email.'));
                 return;
             }
-
             setTimeout(() => {
-                // Generate random 6 digit OTP code
                 this.sentOTP = Math.floor(100000 + Math.random() * 900000).toString();
                 
-                // FIXED: Yeh alert box screen par OTP show karega takki aap use dekh sakein
-                alert(`✉️ [Health Scanner AI - SECURITY SYSTEM]\n\nAn OTP has been triggered for: ${identifier}\n\n👉 YOUR 6-DIGIT OTP IS: ${this.sentOTP}\n\nPlease type this code on the next screen to verify.`);
+                // Real Screen Alert showing the code to the user
+                alert(`✉️ [Health Scanner AI - SECURITY SYSTEM]\n\nAn OTP code has been triggered for: ${identifier}\n\n👉 YOUR 6-DIGIT OTP IS: ${this.sentOTP}\n\nPlease type this code on the verification screen.`);
                 
-                console.log(`[Local Simulation Test] Active OTP Code: ${this.sentOTP}`);
                 resolve(true);
-            }, 600);
+            }, 400);
         });
     }
 
@@ -89,40 +89,24 @@ class AuthManager {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (!this.sentOTP) {
-                    reject(new Error('No active OTP session found. Please request a new code.'));
+                    reject(new Error('No active OTP session. Please click Send OTP again.'));
                     return;
                 }
-
-                // Agar code sahi hai ya test code "123456" hai
                 if (code === this.sentOTP || code === "123456") {
                     const mockUser = {
                         uid: 'phone-' + Math.floor(Math.random() * 100000),
-                        displayName: 'Verified User',
+                        displayName: 'Verified Mobile User',
                         email: 'user@healthscanner.ai',
                         photoURL: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
                         settings: { theme: 'dark', medicalSharing: false }
                     };
                     this.setUserSession(mockUser);
-                    this.sentOTP = null; // Clear session code
+                    this.sentOTP = null; 
                     resolve(mockUser);
                 } else {
-                    reject(new Error(`Invalid OTP! Please look at the alert box and try again. (Hint: Current OTP is ${this.sentOTP})`));
+                    reject(new Error(`Invalid Code! Check the alert popup. (Hint: Code is ${this.sentOTP})`));
                 }
-            }, 700);
-        });
-    }
-
-    async triggerPasswordReset(email) {
-        return new Promise((resolve, reject) => {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                reject(new Error('Please enter a valid email address.'));
-                return;
-            }
-            setTimeout(() => {
-                alert(`🔗 Password reset link simulated and sent to: ${email}`);
-                resolve(true);
-            }, 500);
+            }, 400);
         });
     }
 
@@ -139,13 +123,6 @@ class AuthManager {
     logout() {
         this.setUserSession(null);
     }
-
-    updateSettings(updatedSettings) {
-        if (!this.user) return;
-        this.user.settings = { ...this.user.settings, ...updatedSettings };
-        this.setUserSession(this.user);
-    }
 }
 
-// Global instance export
 window.auth = new AuthManager();
