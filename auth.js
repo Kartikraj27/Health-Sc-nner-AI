@@ -1,5 +1,5 @@
 /**
- * auth.js - COMPLETE FIXED FOR GOOGLE, APPLE, AND MOBILE OTP
+ * auth.js - FIXED FOR ACCOUNT SELECTION & REALISTIC FLOW
  * Multi-Method Authentication Manager (Local & GitHub Pages Simulation)
  */
 
@@ -31,43 +31,64 @@ class AuthManager {
         this.subscribers.forEach(cb => cb(this.user));
     }
 
-    // FIXED: Simulates a Google Account Choice Popup and Logs in Instantly
+    // FIXED: Ab click karte hi auto login nahi hoga, pehle account choose karne ko kahega
     async loginWithGoogle() {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
+            // User se account select karne ke liye pucha jayega
+            const selectedEmail = prompt(
+                "👉 Google Account Choose Karein:\n\n1. user@gmail.com\n2. official.health@gmail.com\n\n(Apna email id type karein ya direct 'OK' dabaein):", 
+                "user@gmail.com"
+            );
+
+            if (selectedEmail === null) {
+                reject(new Error('Google Login Cancelled by User.'));
+                return;
+            }
+
             setTimeout(() => {
                 const mockUser = {
                     uid: 'google-' + Math.floor(Math.random() * 100000),
-                    displayName: 'Google User (Demo)',
-                    email: 'user@google.com',
+                    displayName: selectedEmail.split('@')[0],
+                    email: selectedEmail,
                     photoURL: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150',
                     settings: { theme: 'dark', medicalSharing: false }
                 };
                 this.setUserSession(mockUser);
-                alert(`🎉 Google Authentication Successful!\nLogged in as: ${mockUser.displayName}`);
+                alert(`🎉 Success: Connected via Google Account (${selectedEmail})!`);
                 resolve(mockUser);
             }, 600);
         });
     }
 
-    // FIXED: Simulates an Apple ID Secure Authentication Prompt and Logs in Instantly
+    // FIXED: Apple ID account select verification simulation
     async loginWithApple() {
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
+            const selectedAppleId = prompt(
+                "🍏 Apple ID Sign-In Verification:\n\nApna Apple ID (Email) darj karein:", 
+                "user@icloud.com"
+            );
+
+            if (selectedAppleId === null || selectedAppleId.trim() === "") {
+                reject(new Error('Apple Sign-In Cancelled.'));
+                return;
+            }
+
             setTimeout(() => {
                 const mockUser = {
                     uid: 'apple-' + Math.floor(Math.random() * 100000),
-                    displayName: 'Apple Identity User',
-                    email: 'user@apple.com',
+                    displayName: 'Apple User',
+                    email: selectedAppleId,
                     photoURL: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150',
                     settings: { theme: 'dark', medicalSharing: false }
                 };
                 this.setUserSession(mockUser);
-                alert(`🎉 Apple ID Connected Securely!\nLogged in successfully.`);
+                alert(`🎉 Success: Connected Securely via Apple ID!`);
                 resolve(mockUser);
             }, 600);
         });
     }
 
-    // FIXED: Mobile / Email OTP Generator Trigger via Screen Popup Alert
+    // FIXED: Mobile OTP Trigger Pop-up Alert
     async sendOTP(identifier) {
         return new Promise((resolve, reject) => {
             if (!identifier || identifier.trim() === "") {
@@ -76,10 +97,7 @@ class AuthManager {
             }
             setTimeout(() => {
                 this.sentOTP = Math.floor(100000 + Math.random() * 900000).toString();
-                
-                // Real Screen Alert showing the code to the user
-                alert(`✉️ [Health Scanner AI - SECURITY SYSTEM]\n\nAn OTP code has been triggered for: ${identifier}\n\n👉 YOUR 6-DIGIT OTP IS: ${this.sentOTP}\n\nPlease type this code on the verification screen.`);
-                
+                alert(`✉️ [Health Scanner AI - SECURITY SYSTEM]\n\nOTP code sent to: ${identifier}\n\n👉 YOUR 6-DIGIT OTP IS: ${this.sentOTP}\n\nPlease enter this code on the screen.`);
                 resolve(true);
             }, 400);
         });
@@ -89,7 +107,7 @@ class AuthManager {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (!this.sentOTP) {
-                    reject(new Error('No active OTP session. Please click Send OTP again.'));
+                    reject(new Error('No active OTP session. Click Send OTP again.'));
                     return;
                 }
                 if (code === this.sentOTP || code === "123456") {
@@ -104,7 +122,7 @@ class AuthManager {
                     this.sentOTP = null; 
                     resolve(mockUser);
                 } else {
-                    reject(new Error(`Invalid Code! Check the alert popup. (Hint: Code is ${this.sentOTP})`));
+                    reject(new Error(`Invalid Code! Correct OTP is ${this.sentOTP}`));
                 }
             }, 400);
         });
