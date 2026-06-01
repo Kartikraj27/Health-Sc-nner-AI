@@ -1,1 +1,1 @@
-# Health-Scanner-AI
+# Health-Scanner AI
